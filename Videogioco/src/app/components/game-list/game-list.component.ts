@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { GameItem } from 'src/app/models/game-item.interface';
-import { GameListService } from 'src/app/services/game-list.service';
+import { Component, OnInit,EventEmitter, Output } from '@angular/core';
+import { GameItem } from 'src/app/interface/game-item.interface';
+import { Genere, genereListDB } from 'src/app/interface/genere';
+import { GamesListService } from 'src/app/services/game-list.service';
+
 
 @Component({
-  selector: 'app-game-list',
+  selector: 'app-games-list',
   templateUrl: './game-list.component.html',
   styleUrls: ['./game-list.component.scss']
 })
-export class GameListComponent implements OnInit {
-
-  gameList: GameItem[] = [];
-  constructor(private gameListService: GameListService) {
-    this.gameList = this.gameListService.getGameList();
+export class GamesListComponent implements OnInit {
+  gameList: GameItem[];
+  genereList: Genere[] = genereListDB;
+  genereSelezionato: number;
+  constructor(private gamesListService: GamesListService) {
+    this.gameList = this.gamesListService.gameList
   }
-
   ngOnInit(): void {
   }
-
+  selectChange(value) {
+    this.genereSelezionato = Number(value)
+  }
 }
+

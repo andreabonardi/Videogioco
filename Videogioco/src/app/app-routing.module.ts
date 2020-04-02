@@ -1,21 +1,20 @@
 import * as core from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { GameListComponent } from './components/game-list/game-list.component';
+import { GamesListComponent } from './components/game-list/game-list.component';
 import { GameDetailComponent } from './components/game-detail/game-detail.component';
-import { GameItemComponent } from './components/game-item/game-item.component';
 import { EditGameComponent } from './components/edit-game/edit-game.component';
 import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'list', component: GameListComponent},
+  {path: 'list', component: GamesListComponent},
   {path: 'edit', component: EditGameComponent},
   {path: 'detail', component: GameDetailComponent},
   {path: 'login', component: LoginComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {path: '', redirectTo: '/login', pathMatch: 'full'}
 ]
- 
+
 @core.NgModule({
     imports: [
         RouterModule.forRoot(appRoutes)
@@ -24,4 +23,4 @@ const appRoutes: Routes = [
         RouterModule
     ]
 })
-export class RoutingGame { }
+export class RoutingGame { } 

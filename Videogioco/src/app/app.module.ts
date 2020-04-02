@@ -1,34 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { GameListComponent } from './components/game-list/game-list.component';
+import { GamesListComponent } from './components/game-list/game-list.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { EditGameComponent } from './components/edit-game/edit-game.component';
 import { GameDetailComponent } from './components/game-detail/game-detail.component';
-import { RouterModuleComponent } from './router-module/router-module.component';
-import { AppRouting } from './app/app-routing.module.ts/app-routing.module.ts.component';
-import { LoginComponent } from './component/login/login.component';
-import { GameItemComponent } from './components/game-item/game-item.component';
-
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { from } from 'rxjs';
+const appRoutes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'gamesList', component: GamesListComponent },
+  { path: 'gameDetail', component: GameDetailComponent },
+  { path: 'editGame', component: EditGameComponent }
+];
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    GameListComponent,
+    GamesListComponent,
     MenuComponent,
     EditGameComponent,
     GameDetailComponent,
-    RouterModuleComponent,
-    AppRouting.Module.TsComponent,
     LoginComponent,
-    GameItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
